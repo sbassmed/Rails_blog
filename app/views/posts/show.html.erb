@@ -1,2 +1,26 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<%= link_to 'Volver', root_path%>
+
+			<h1><%= @post.title %></h1>
+			<p><%= @post.body %></p>
+
+			<hr>
+			<% @post.comments.each do |comment| %>
+				<div class="panel panel-default">
+				  <div class="panel-heading"><%= "#{comment.user.email} comentó #{time_ago_in_words(comment.created_at)}" %></div>
+				  <div class="panel-body">
+				    <%= comment.body %>
+				  </div>
+				</div>
+			<% end %>
+
+			<div>
+				<% if user_signed_in? %>
+					<%= render 'comments/form' %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
