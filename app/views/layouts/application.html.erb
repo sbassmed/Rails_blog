@@ -64,9 +64,9 @@
       </div><!-- /.container -->
     </nav>
 
-    <!-- <% if flash[:notice] %>
+    <% if flash[:notice] %>
       <div class="alert alert-info"><%= flash[:notice] %></div>
-    <% end %> -->
+    <% end %>
     <% if user_signed_in? %>
       <div>User <%= current_user.email %></div>
     <% end %>

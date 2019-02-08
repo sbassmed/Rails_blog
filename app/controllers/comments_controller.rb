@@ -5,8 +5,9 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.save
+    flash[:notice]= "El comentario fue publicado con éxito"
 
-    redirect_to post_path(comment_params[:post_id]) , notice: "El comentario fue publicado con éxito"
+      redirect_to post_path(comment_params[:post_id])
   end
 
   private

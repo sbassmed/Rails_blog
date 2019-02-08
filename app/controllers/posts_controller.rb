@@ -4,9 +4,9 @@ class PostsController < ApplicationController
   before_action :find_post, :except => [:index, :new, :create]
 
   def index
-    @posts = Post.all
+    @posts = Post.order("updated_at DESC")
   end
-#agregado
+#agregado form_for
   def show
       @comment = Comment.new
   end
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post[:user_id] = current_user[:id]
     if @post.save
-      flash[:success] = "Post creado exitosamente!"
+      flash[:notice] = "Post creado exitosamente!"
       redirect_to posts_path
     else
       flash[:danger] = @post.errors.full_messages
@@ -27,8 +27,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  # def edit
+  #   @post = Post.find(params[:id])
+  # end
 
   def update
     if @post.update(post_params)
@@ -43,8 +44,9 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    flash[:danger] = "Post ELIMINADO"
 
-    redirect_to posts_path, notice: "El post fue eliminado"
+    redirect_to posts_path
   end
 
   private
