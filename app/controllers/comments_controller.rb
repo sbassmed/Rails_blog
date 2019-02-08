@@ -1,11 +1,12 @@
 class CommentsController < ApplicationController
 
   before_action :authenticate_user!
-  
+
   def create
-    post = Post.find(params[:post_id])
-    post.comments.create(comments_params)
-      redirect_to post , notice: "El comentario fue publicado con éxito"
+    @comment = Comment.new(comment_params)
+    @comment.save
+    
+    redirect_to post_path(comment_params[:post_id]) , notice: "El comentario fue publicado con éxito"
   end
 
   private
