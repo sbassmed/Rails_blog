@@ -32,6 +32,9 @@
         </div>
       </div>
       </nav>
+      <% if user_signed_in? %>
+      <div>Bienvenido! <%= current_user.email %></div>
+      <% end %>
       <div class="container">
         <% flash.each do |key, value| %>
           <% if value.class == String %>

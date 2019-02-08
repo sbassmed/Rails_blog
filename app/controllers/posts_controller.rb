@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:show, :index]
+
   def index
     @posts = Post.all
   end
@@ -8,36 +10,39 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def create
+    @post = Post.new(post_params)
+    @post[:user_id] = current_user[:id]
+    if @post.save
+      flash[:success] = "Post publicado exitosamente!"
+      redirect_to posts_path
+    else
+      flash[:danger] = @post.errors.full_messages
+      render :new
+    end
+  end
+
   def show
-      @comment = Comment.new
+      @post = Post.find(params[:id])
   end
 
   def edit
   end
 
   def update
-    if @post.update(post_params)
-      flash[:success] = "Post modificado exitosamente!"
-      redirect_to posts_path
-    else
-      flash[:danger] = "No se pudo modificar el post"
-      render :edit
-    end
+    @post = Post.update(params[:id], post_params)
   end
 
   def destroy
-      if @post.destroy
-        flash[:success] = "Post eliminado exitosamente!"
-        redirect_to posts_path
-      else
-        flash[:danger] = "No se pudo eliminar el post"
-        render :index
-      end
-    end
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    redirect_to posts_path, notice: "El post fue eliminado con éxito"
+  end
 
   private
 
       def post_params
-        params.require(:post).permit(:title, :body, :user_id)
+        params.require(:post).permit(:title, :body)
       end
 end
