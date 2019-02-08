@@ -14,7 +14,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  has_many :comments
+  has_many :comments, :order => 'created_at DESC'
 
   validates :title, :body, presence: {message: "No puede estar en blanco"}
   validates :body, length: {minimum: 250, message: "Ingresa al menos 250 caracteres"}
