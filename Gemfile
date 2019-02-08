@@ -21,6 +21,8 @@ gem 'jquery-rails'
 # Use Devise to authentication
 gem 'devise'
 # Use Uglifier as compressor for JavaScript assets
+# Translate languages
+gem 'rails-i18n'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
