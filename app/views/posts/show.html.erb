@@ -10,8 +10,8 @@
 			<hr>
 			<% @post.comments.each do |comment| %>
 				<div class="panel panel-default">
-				  <div class="panel-heading"><%= "#{comment.user.email} comentó, mira ve #{time_ago_in_words(comment.created_at)}" %></div>
-				  <div class="panel-body">
+				  <div class="panel-heading"><%= "Comento #{comment.user.email} #{time_ago_in_words(comment.created_at)} publicado el #{l(comment.created_at, format: :long)} " %></div>
+				  <div class="panel-body" >
 				    <%= comment.body %>
 				  </div>
 				</div>

@@ -63,10 +63,14 @@
         </div>
       </div><!-- /.container -->
     </nav>
-      <% if user_signed_in? %>
-      <div>Bienvenido! <%= current_user.email %></div>
-      <% end %>
-      <div class="container">
+
+    <!-- <% if flash[:notice] %>
+      <div class="alert alert-info"><%= flash[:notice] %></div>
+    <% end %> -->
+    <% if user_signed_in? %>
+      <div>User <%= current_user.email %></div>
+    <% end %>
+    <div class="container">
         <% flash.each do |key, value| %>
           <% if value.class == String %>
             <%= content_tag(:div, value, class: "alert alert-#{key}") %>
@@ -82,5 +86,6 @@
       <div class="container">
         <%= yield %>
       </div>
+
   </body>
 </html>

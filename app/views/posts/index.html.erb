@@ -4,7 +4,7 @@
 			<% @posts.each do |post| %>
 				<div>
 					<h1><%= link_to post.title, post %></h1>
-					<p class="text-muted"><%= "Publicado por #{post.user.email} #{time_ago_in_words(post.created_at)}" %></p>
+					<p class="text-muted"><%= "Publicado por #{post.user.email} #{time_ago_in_words(post.created_at)} el #{l(post.created_at, format: :long)} Horas" %></p>
 					<p><%= "#{post.body[0...300]}..." %></p>
 					<% if !current_user.nil? %>
 						<% if current_user[:id] == post.user_id %>

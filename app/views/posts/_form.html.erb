@@ -3,14 +3,16 @@
 		<div class="col-sm-6 col-sm-offset-3">
 			<h1><%= form_title %></h1>
 			<%= form_for @post do |f|  %>
+
 				<div class="form-group">
 					<%= f.label :title %>
-					<%= f.text_field :title, class: "form-control" %>
+					<%= f.text_field :title, class: "form-control", placeholder: "Escriba titulo" %>
+
 				</div>
 
 				<div class="form-group">
 					<%= f.label :body %>
-					<%= f.text_area :body, class: "form-control", rows: "10" %>
+					<%= f.text_area :body, class: "form-control", rows: "10" , placeholder: "Escriba al menos 250 caracteres......." %>
 				</div>
 
 				<div>

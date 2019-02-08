@@ -1,0 +1,4 @@
+es:
+   time:
+    formats:
+      own: '%H:%M:%S, %d %B'

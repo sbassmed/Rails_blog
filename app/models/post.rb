@@ -16,7 +16,8 @@ class Post < ApplicationRecord
 
   has_many :comments
 
-  validates :title, :body, presence: {message: "No puede estar en blanco"}
-  validates :body, length: {minimum: 250, message: "Ingresa al menos 250 caracteres"}
+  validates :user, presence: {message:"Usuario donde estas?"}
+  validates :title, :body, presence: {message: " No puede estar en blanco"}
+  validates :body, length: {minimum: 250, message: " Ingresa al menos 250 caracteres"}
 
 end

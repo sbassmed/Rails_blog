@@ -3,7 +3,7 @@
 	<%= f.hidden_field :user_id, value: current_user[:id] if !current_user.nil? %>
 	<div class="form-group">
 		<%= f.label 'Nuevo comentario' %>
-		<%= f.text_area :body, rows: 3, class:"form-control" %>
+		<%= f.text_area :body, rows: 3, class:"form-control" ,placeholder: "Agregar comentario"%>
 	</div>
 
 	<div>
