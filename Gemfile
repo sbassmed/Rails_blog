@@ -13,6 +13,9 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.4.0'
 gem 'sassc-rails', '>= 2.0.0'
+#Obtain avatar
+gem 'gravatar-ultimate'
+gem 'xmlrpc'
 #Use JQuery
 gem 'jquery-rails'
 # Use Devise to authentication
