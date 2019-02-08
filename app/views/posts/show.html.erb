@@ -1,3 +1,4 @@
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -9,7 +10,7 @@
 			<hr>
 			<% @post.comments.each do |comment| %>
 				<div class="panel panel-default">
-				  <div class="panel-heading"><%= "#{comment.user.email} comentó #{time_ago_in_words(comment.created_at)}" %></div>
+				  <div class="panel-heading"><%= "#{comment.user.email} comentó, mira ve #{time_ago_in_words(comment.created_at)}" %></div>
 				  <div class="panel-body">
 				    <%= comment.body %>
 				  </div>
