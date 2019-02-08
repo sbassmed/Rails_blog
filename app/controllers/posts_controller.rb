@@ -18,19 +18,26 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post[:user_id] = current_user[:id]
-    @post.save
-
-      redirect_to posts_path , notice: "Post publicado exitosamente!"
+    if @post.save
+      flash[:success] = "Post creado exitosamente!"
+      redirect_to posts_path
+    else
+      flash[:danger] = @post.errors.full_messages
+      render :new
+    end
   end
-
-
 
   def edit
   end
 
   def update
-    @post = Post.update(post_params)
-      redirect_to posts_path , notice: "Post modificado"
+    if @post.update(post_params)
+      flash[:success] = "Post modificado exitosamente!"
+      redirect_to posts_path
+    else
+      flash[:danger] =  @post.errors.full_messages
+      render :edit
+    end
   end
 
   def destroy
